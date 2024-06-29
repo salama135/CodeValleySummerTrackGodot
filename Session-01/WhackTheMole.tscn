@@ -57,12 +57,12 @@ list_of_positions = [NodePath("../Node2D/Marker2D1"), NodePath("../Node2D/Marker
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_dq51j")
 
-[node name="Hammer" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("collider", "score_label", "timer_label", "game_over", "bonk")]
+[node name="Hammer" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("hammer_collider", "score_label", "timer_label", "game_over", "bonk")]
 position = Vector2(39, 23)
 sprite_frames = SubResource("SpriteFrames_db7h3")
 animation = &"hammer"
 script = ExtResource("7_hwf3c")
-collider = NodePath("Area2Dhammer/CollisionShape2Dhammer")
+hammer_collider = NodePath("Area2Dhammer/CollisionShape2Dhammer")
 score_label = NodePath("../LabelScore")
 timer_label = NodePath("../LabelTimer")
 game_over = NodePath("../PanelGameOver")
@@ -106,7 +106,6 @@ label_settings = SubResource("LabelSettings_65qsa")
 horizontal_alignment = 1
 
 [node name="TimerGame" type="Timer" parent="."]
-wait_time = 0.25
 autostart = true
 
 [node name="PanelGameOver" type="Panel" parent="."]
