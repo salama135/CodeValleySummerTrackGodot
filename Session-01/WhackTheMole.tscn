@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d05d10j1pt4vh"]
+[gd_scene load_steps=13 format=3 uid="uid://d05d10j1pt4vh"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xsmkk5jye6" path="res://Session-01/floor.png" id="1_ekorp"]
 [ext_resource type="Texture2D" uid="uid://d3a5h2cvfetlf" path="res://Session-01/hammer-00.png" id="2_8co1h"]
@@ -9,8 +9,8 @@
 [ext_resource type="Script" path="res://Session-01/hammer.gd" id="7_hwf3c"]
 [ext_resource type="AudioStream" uid="uid://ctii4iaj1fjc6" path="res://Session-01/bonk.mp3" id="8_876ay"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51j"]
-size = Vector2(11, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwc8h"]
+size = Vector2(16, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_db7h3"]
 animations = [{
@@ -35,6 +35,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51j"]
+size = Vector2(11, 20)
+
 [sub_resource type="LabelSettings" id="LabelSettings_65qsa"]
 font_size = 1000
 font_color = Color(1, 0.38, 0.38, 1)
@@ -55,7 +58,7 @@ list_of_positions = [NodePath("../Node2D/Marker2D1"), NodePath("../Node2D/Marker
 
 [node name="CollisionShape2Dmole" type="CollisionShape2D" parent="Mole/Area2Dmole"]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_dq51j")
+shape = SubResource("RectangleShape2D_vwc8h")
 
 [node name="Hammer" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("hammer_collider", "score_label", "timer_label", "game_over", "bonk")]
 position = Vector2(39, 23)
