@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=3 uid="uid://d05d10j1pt4vh"]
+
+[ext_resource type="Texture2D" uid="uid://cf5xsmkk5jye6" path="res://Session-01/floor.png" id="1_ekorp"]
+[ext_resource type="Texture2D" uid="uid://d3a5h2cvfetlf" path="res://Session-01/hammer-00.png" id="2_8co1h"]
+[ext_resource type="Script" path="res://Session-01/mole.gd" id="3_akwt5"]
+[ext_resource type="Texture2D" uid="uid://ckne4ood8j54p" path="res://Session-01/mole.png" id="3_bcqkn"]
+[ext_resource type="Texture2D" uid="uid://bsxd5qyombh4x" path="res://Session-01/hammer-01.png" id="4_58j6g"]
+[ext_resource type="Texture2D" uid="uid://dnblvwa4g5kbi" path="res://Session-01/hammer-02.png" id="5_xw47i"]
+[ext_resource type="Script" path="res://Session-01/hammer.gd" id="7_hwf3c"]
+[ext_resource type="AudioStream" uid="uid://ctii4iaj1fjc6" path="res://Session-01/bonk.mp3" id="8_876ay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq51j"]
+size = Vector2(11, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_db7h3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8co1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_58j6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xw47i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_58j6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8co1h")
+}],
+"loop": false,
+"name": &"hammer",
+"speed": 12.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_65qsa"]
+font_size = 1000
+font_color = Color(1, 0.38, 0.38, 1)
+
+[node name="Node" type="Node"]
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(93, 60)
+texture = ExtResource("1_ekorp")
+
+[node name="Mole" type="Sprite2D" parent="." node_paths=PackedStringArray("list_of_positions")]
+position = Vector2(93, 86)
+texture = ExtResource("3_bcqkn")
+script = ExtResource("3_akwt5")
+list_of_positions = [NodePath("../Node2D/Marker2D1"), NodePath("../Node2D/Marker2D2"), NodePath("../Node2D/Marker2D3"), NodePath("../Node2D/Marker2D4"), NodePath("../Node2D/Marker2D5"), NodePath("../Node2D/Marker2D6"), NodePath("../Node2D/Marker2D7"), NodePath("../Node2D/Marker2D8"), NodePath("../Node2D/Marker2D9")]
+
+[node name="Area2Dmole" type="Area2D" parent="Mole"]
+
+[node name="CollisionShape2Dmole" type="CollisionShape2D" parent="Mole/Area2Dmole"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_dq51j")
+
+[node name="Hammer" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("collider", "score_label", "timer_label", "game_over", "bonk")]
+position = Vector2(39, 23)
+sprite_frames = SubResource("SpriteFrames_db7h3")
+animation = &"hammer"
+script = ExtResource("7_hwf3c")
+collider = NodePath("Area2Dhammer/CollisionShape2Dhammer")
+score_label = NodePath("../LabelScore")
+timer_label = NodePath("../LabelTimer")
+game_over = NodePath("../PanelGameOver")
+bonk = NodePath("../Bonk")
+
+[node name="Area2Dhammer" type="Area2D" parent="Hammer"]
+
+[node name="CollisionShape2Dhammer" type="CollisionShape2D" parent="Hammer/Area2Dhammer"]
+position = Vector2(6, 4)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_dq51j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(93, 60)
+zoom = Vector2(4, 4)
+
+[node name="TimerMole" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="LabelTimer" type="Label" parent="."]
+offset_left = 118.0
+offset_top = 99.0
+offset_right = 3747.0
+offset_bottom = 1461.0
+scale = Vector2(0.015, 0.015)
+text = " "
+label_settings = SubResource("LabelSettings_65qsa")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LabelScore" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 99.0
+offset_right = 3642.0
+offset_bottom = 1461.0
+scale = Vector2(0.015, 0.015)
+label_settings = SubResource("LabelSettings_65qsa")
+horizontal_alignment = 1
+
+[node name="TimerGame" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="PanelGameOver" type="Panel" parent="."]
+visible = false
+offset_right = 183.0
+offset_bottom = 120.0
+
+[node name="Label" type="Label" parent="PanelGameOver"]
+layout_mode = 1
+offset_left = 55.0
+offset_top = 47.0
+offset_right = 5482.0
+offset_bottom = 1409.0
+scale = Vector2(0.015, 0.015)
+text = "Game Over"
+label_settings = SubResource("LabelSettings_65qsa")
+horizontal_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D1" type="Marker2D" parent="Node2D"]
+position = Vector2(93, 55)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(144, 55)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D"]
+position = Vector2(41, 55)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D"]
+position = Vector2(93, 22)
+
+[node name="Marker2D5" type="Marker2D" parent="Node2D"]
+position = Vector2(144, 22)
+
+[node name="Marker2D6" type="Marker2D" parent="Node2D"]
+position = Vector2(41, 22)
+
+[node name="Marker2D7" type="Marker2D" parent="Node2D"]
+position = Vector2(93, 86)
+
+[node name="Marker2D8" type="Marker2D" parent="Node2D"]
+position = Vector2(144, 86)
+
+[node name="Marker2D9" type="Marker2D" parent="Node2D"]
+position = Vector2(41, 86)
+
+[node name="Bonk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_876ay")
+
+[connection signal="animation_finished" from="Hammer" to="Hammer" method="_on_animation_finished"]
+[connection signal="area_entered" from="Hammer/Area2Dhammer" to="Hammer" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="TimerMole" to="Mole" method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerGame" to="Hammer" method="_on_timer_game_timeout"]
