@@ -1,10 +1,10 @@
 class_name GameManager
 extends Node2D
 
-@export var score_label:Label
-@export var timer_label:Label
-@export var timer:int = 15
-@export var game_over:Panel
+@onready var score_label:Label = $LabelScore
+@onready var timer_label:Label = $LabelTimer
+@onready var game_over:Panel = $PanelGameOver
+var timer:int = 15
 var score = 0
 
 # Called when the node enters the scene tree for the first time.

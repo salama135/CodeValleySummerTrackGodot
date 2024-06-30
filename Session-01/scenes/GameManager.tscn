@@ -6,11 +6,8 @@
 font_size = 1000
 font_color = Color(1, 0.38, 0.38, 1)
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("score_label", "timer_label", "game_over")]
+[node name="GameManager" type="Node2D"]
 script = ExtResource("1_8ju4c")
-score_label = NodePath("LabelScore")
-timer_label = NodePath("LabelTimer")
-game_over = NodePath("PanelGameOver")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(93, 60)
