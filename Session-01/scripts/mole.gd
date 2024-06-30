@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_timer_timeout():
+
+func _on_timer_mole_timeout():
 	var my_random_number = rng.randf_range(0, 9)
 	self.set_position(list_of_positions[my_random_number].global_position)

@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnqctc1dgo0ku"]
+
+[ext_resource type="Script" path="res://Session-01/scripts/GameManager.gd" id="1_8ju4c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gc2xr"]
+font_size = 1000
+font_color = Color(1, 0.38, 0.38, 1)
+
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("score_label", "timer_label", "game_over")]
+script = ExtResource("1_8ju4c")
+score_label = NodePath("LabelScore")
+timer_label = NodePath("LabelTimer")
+game_over = NodePath("PanelGameOver")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(93, 60)
+zoom = Vector2(4, 4)
+
+[node name="LabelScore" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 99.0
+offset_right = 3642.0
+offset_bottom = 1461.0
+scale = Vector2(0.015, 0.015)
+label_settings = SubResource("LabelSettings_gc2xr")
+horizontal_alignment = 1
+
+[node name="LabelTimer" type="Label" parent="."]
+offset_left = 118.0
+offset_top = 99.0
+offset_right = 3747.0
+offset_bottom = 1461.0
+scale = Vector2(0.015, 0.015)
+text = " "
+label_settings = SubResource("LabelSettings_gc2xr")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimerGame" type="Timer" parent="."]
+autostart = true
+
+[node name="PanelGameOver" type="Panel" parent="."]
+visible = false
+offset_right = 183.0
+offset_bottom = 120.0
+
+[node name="Label" type="Label" parent="PanelGameOver"]
+layout_mode = 1
+offset_left = 55.0
+offset_top = 47.0
+offset_right = 5482.0
+offset_bottom = 1409.0
+scale = Vector2(0.015, 0.015)
+text = "Game Over"
+label_settings = SubResource("LabelSettings_gc2xr")
+horizontal_alignment = 1
+
+[connection signal="timeout" from="TimerGame" to="." method="_on_timer_game_timeout"]

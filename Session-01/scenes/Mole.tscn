@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://djckoc7v7c4mo"]
+
+[ext_resource type="Texture2D" uid="uid://ckne4ood8j54p" path="res://Session-01/assets/mole.png" id="1_1av43"]
+[ext_resource type="Script" path="res://Session-01/scripts/mole.gd" id="2_0wxgr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vb1hi"]
+size = Vector2(16, 14)
+
+[node name="Mole" type="Node2D"]
+
+[node name="Holes" type="Node2D" parent="."]
+
+[node name="Marker2D1" type="Marker2D" parent="Holes"]
+position = Vector2(93, 55)
+
+[node name="Marker2D2" type="Marker2D" parent="Holes"]
+position = Vector2(144, 55)
+
+[node name="Marker2D3" type="Marker2D" parent="Holes"]
+position = Vector2(41, 55)
+
+[node name="Marker2D4" type="Marker2D" parent="Holes"]
+position = Vector2(93, 22)
+
+[node name="Marker2D5" type="Marker2D" parent="Holes"]
+position = Vector2(144, 22)
+
+[node name="Marker2D6" type="Marker2D" parent="Holes"]
+position = Vector2(41, 22)
+
+[node name="Marker2D7" type="Marker2D" parent="Holes"]
+position = Vector2(93, 86)
+
+[node name="Marker2D8" type="Marker2D" parent="Holes"]
+position = Vector2(144, 86)
+
+[node name="Marker2D9" type="Marker2D" parent="Holes"]
+position = Vector2(41, 86)
+
+[node name="Mole" type="Sprite2D" parent="." node_paths=PackedStringArray("list_of_positions")]
+position = Vector2(93, 86)
+texture = ExtResource("1_1av43")
+script = ExtResource("2_0wxgr")
+list_of_positions = [NodePath("../Holes/Marker2D1"), NodePath("../Holes/Marker2D2"), NodePath("../Holes/Marker2D3"), NodePath("../Holes/Marker2D4"), NodePath("../Holes/Marker2D5"), NodePath("../Holes/Marker2D6"), NodePath("../Holes/Marker2D7"), NodePath("../Holes/Marker2D8"), NodePath("../Holes/Marker2D9")]
+
+[node name="Area2Dmole" type="Area2D" parent="Mole"]
+
+[node name="CollisionShape2Dmole" type="CollisionShape2D" parent="Mole/Area2Dmole"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_vb1hi")
+
+[node name="TimerMole" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="TimerMole" to="Mole" method="_on_timer_mole_timeout"]

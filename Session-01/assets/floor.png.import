@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnblvwa4g5kbi"
-path="res://.godot/imported/hammer-02.png-347d8d8700e264bc97c2f4c1449e697f.ctex"
+uid="uid://cf5xsmkk5jye6"
+path="res://.godot/imported/floor.png-c17bc6d823c9bb66c6aa5b17f55660e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Session-01/hammer-02.png"
-dest_files=["res://.godot/imported/hammer-02.png-347d8d8700e264bc97c2f4c1449e697f.ctex"]
+source_file="res://Session-01/assets/floor.png"
+dest_files=["res://.godot/imported/floor.png-c17bc6d823c9bb66c6aa5b17f55660e5.ctex"]
 
 [params]
 
