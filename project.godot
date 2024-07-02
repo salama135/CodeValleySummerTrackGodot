@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CodeValleySummerTrackGodot"
-run/main_scene="res://Session-01/scenes/WhackTheMole-FinishedGame.tscn"
+run/main_scene="res://Session-01/scenes/WhackTheMole-Students.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

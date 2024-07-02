@@ -2,8 +2,8 @@ extends AnimatedSprite2D
 
 @export var speed = 350
 @export var game_manager:GameManager
-@onready var hammer_collider:CollisionShape2D = $Area2Dhammer2/CollisionShape2Dhammer
-@onready var bonk:AudioStreamPlayer = $Bonk2
+@onready var hammer_collider:CollisionShape2D = $Area2D/CollisionShape2D
+@onready var bonk:AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var velocity = Vector2.ZERO
 var screensize = Vector2(480, 720)
