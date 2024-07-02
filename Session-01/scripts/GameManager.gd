@@ -9,7 +9,7 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer_label.text = str(timer)
+	timer_label.text = "Time: " + str(timer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,12 +22,12 @@ func update_score():
 	# update score variable
 	score = score + 1
 	# update socre label
-	score_label.text = str(score)
+	score_label.text = "Score: " + str(score)
 
 func update_timer():
 	# give player one more second
 	timer = timer + 1
-	timer_label.text = str(timer)
+	timer_label.text = "Time: " + str(timer)
 		
 
 func _on_timer_game_timeout():
@@ -35,4 +35,4 @@ func _on_timer_game_timeout():
 		return
 	
 	timer = timer - 1
-	timer_label.text = str(timer)
+	timer_label.text = "Time: " + str(timer)

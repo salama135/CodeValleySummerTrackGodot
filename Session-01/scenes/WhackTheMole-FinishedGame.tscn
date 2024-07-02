@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://d05d10j1pt4vh"]
+
+[ext_resource type="PackedScene" uid="uid://e0f0ugudnc3h" path="res://Session-01/scenes/Floor.tscn" id="1_cgh42"]
+[ext_resource type="PackedScene" uid="uid://djckoc7v7c4mo" path="res://Session-01/scenes/Mole.tscn" id="2_l0l66"]
+[ext_resource type="PackedScene" uid="uid://cxnpivvtt56ye" path="res://Session-01/scenes/Hammer.tscn" id="3_i1myw"]
+[ext_resource type="PackedScene" uid="uid://cnqctc1dgo0ku" path="res://Session-01/scenes/GameManager.tscn" id="4_l0fvd"]
+
+[node name="Node" type="Node"]
+
+[node name="Ground" parent="." instance=ExtResource("1_cgh42")]
+position = Vector2(93, 60)
+
+[node name="Mole" parent="." instance=ExtResource("2_l0l66")]
+
+[node name="Hammer" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("3_i1myw")]
+game_manager = NodePath("../GameManager")
+
+[node name="GameManager" parent="." instance=ExtResource("4_l0fvd")]

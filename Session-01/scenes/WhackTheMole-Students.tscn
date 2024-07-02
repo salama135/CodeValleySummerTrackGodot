@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://1tm3jmm6vjus"]
+
+[ext_resource type="PackedScene" uid="uid://e0f0ugudnc3h" path="res://Session-01/scenes/Floor.tscn" id="1_y8cq1"]
+[ext_resource type="PackedScene" uid="uid://djckoc7v7c4mo" path="res://Session-01/scenes/Mole.tscn" id="2_erwcw"]
+[ext_resource type="PackedScene" uid="uid://cnqctc1dgo0ku" path="res://Session-01/scenes/GameManager.tscn" id="4_32rou"]
+
+[node name="Node" type="Node"]
+
+[node name="Ground" parent="." instance=ExtResource("1_y8cq1")]
+position = Vector2(93, 60)
+
+[node name="Mole" parent="." instance=ExtResource("2_erwcw")]
+
+[node name="GameManager" parent="." instance=ExtResource("4_32rou")]

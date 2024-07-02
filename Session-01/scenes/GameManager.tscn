@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Session-01/scripts/GameManager.gd" id="1_8ju4c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gc2xr"]
-font_size = 1000
+font_size = 750
 font_color = Color(1, 0.38, 0.38, 1)
 
 [node name="GameManager" type="Node2D"]
@@ -28,7 +28,6 @@ offset_top = 99.0
 offset_right = 3747.0
 offset_bottom = 1461.0
 scale = Vector2(0.015, 0.015)
-text = " "
 label_settings = SubResource("LabelSettings_gc2xr")
 horizontal_alignment = 2
 vertical_alignment = 1
