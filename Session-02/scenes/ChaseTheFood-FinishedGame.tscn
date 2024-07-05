@@ -1,0 +1,173 @@
+[gd_scene load_steps=22 format=3 uid="uid://sprg00758iie"]
+
+[ext_resource type="Texture2D" uid="uid://2ollqe4dkirt" path="res://Session-02/assets/pacman-animation.png" id="1_dm5jc"]
+[ext_resource type="Script" path="res://Session-02/scripts/pacman.gd" id="3_2s15x"]
+[ext_resource type="Texture2D" uid="uid://k4jxpehikfhj" path="res://Session-02/assets/ghost.png" id="3_6ag5i"]
+[ext_resource type="Script" path="res://Session-02/scripts/ghost_x.gd" id="4_48k4t"]
+[ext_resource type="PackedScene" uid="uid://c2stm2bw27a0d" path="res://Session-02/scenes/Level.tscn" id="4_r8f72"]
+[ext_resource type="Script" path="res://Session-02/scripts/ghost_y.gd" id="6_yhr6s"]
+[ext_resource type="Texture2D" uid="uid://cx7e82ku2k0l2" path="res://Session-02/assets/burger-1.png" id="7_8g7kj"]
+[ext_resource type="Texture2D" uid="uid://bl0277v03iuuw" path="res://Session-02/assets/burger-2.png" id="8_q36ng"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8f75"]
+atlas = ExtResource("1_dm5jc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nftxl"]
+atlas = ExtResource("1_dm5jc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26ldc"]
+atlas = ExtResource("1_dm5jc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymepy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8f75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nftxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26ldc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ahf8"]
+radius = 7.07107
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jtq0"]
+atlas = ExtResource("3_6ag5i")
+region = Rect2(64, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt5gh"]
+atlas = ExtResource("3_6ag5i")
+region = Rect2(80, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0sww"]
+atlas = ExtResource("3_6ag5i")
+region = Rect2(96, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqqg5"]
+atlas = ExtResource("3_6ag5i")
+region = Rect2(112, 0, 16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mh8o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jtq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt5gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0sww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqqg5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ift4i"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut6kc"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4gtn"]
+radius = 1.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(119, 128)
+zoom = Vector2(1.88, 1.88)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(81, 49)
+collision_layer = 3
+script = ExtResource("3_2s15x")
+SPEED = 75.0
+
+[node name="pacman" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_ymepy")
+autoplay = "default"
+frame_progress = 0.757708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_5ahf8")
+
+[node name="Level" parent="." instance=ExtResource("4_r8f72")]
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(216, 48)
+script = ExtResource("4_48k4t")
+SPEED = 100.0
+
+[node name="ghost" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+sprite_frames = SubResource("SpriteFrames_7mh8o")
+autoplay = "default"
+frame_progress = 0.322532
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("CircleShape2D_ift4i")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D2"]
+position = Vector2(9, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/Area2D"]
+shape = SubResource("CircleShape2D_ut6kc")
+
+[node name="Area2D2" type="Area2D" parent="CharacterBody2D2"]
+position = Vector2(-9, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2/Area2D2"]
+shape = SubResource("CircleShape2D_r4gtn")
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+position = Vector2(177, 54)
+script = ExtResource("6_yhr6s")
+SPEED = 100.0
+
+[node name="ghost" type="AnimatedSprite2D" parent="CharacterBody2D3"]
+sprite_frames = SubResource("SpriteFrames_7mh8o")
+autoplay = "default"
+frame_progress = 0.411634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+shape = SubResource("CircleShape2D_ift4i")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D3"]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3/Area2D"]
+shape = SubResource("CircleShape2D_ut6kc")
+
+[node name="Area2D2" type="Area2D" parent="CharacterBody2D3"]
+position = Vector2(0, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3/Area2D2"]
+shape = SubResource("CircleShape2D_r4gtn")
+
+[node name="Burger-1" type="Sprite2D" parent="."]
+position = Vector2(150, 70)
+texture = ExtResource("7_8g7kj")
+
+[node name="Burger-2" type="Sprite2D" parent="."]
+position = Vector2(128, 93)
+scale = Vector2(0.388155, 0.388155)
+texture = ExtResource("8_q36ng")
+
+[connection signal="area_entered" from="CharacterBody2D2/Area2D" to="CharacterBody2D2" method="_on_area_2d_area_entered_right"]
+[connection signal="area_entered" from="CharacterBody2D2/Area2D2" to="CharacterBody2D2" method="_on_area_2d_area_entered_left"]
+[connection signal="area_entered" from="CharacterBody2D3/Area2D" to="CharacterBody2D3" method="_on_area_2d_area_entered_right"]
+[connection signal="area_entered" from="CharacterBody2D3/Area2D2" to="CharacterBody2D3" method="_on_area_2d_area_entered_left"]
