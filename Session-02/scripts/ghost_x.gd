@@ -1,3 +1,5 @@
+class_name ghost_x
+
 extends CharacterBody2D
 
 @export var SPEED = 300.0
@@ -20,9 +22,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_area_2d_area_entered_right(area):
-	print(area.name)
 	direction_x = direction_x * -1
 
 func _on_area_2d_area_entered_left(area):
-	print(area.name)
 	direction_x = direction_x * -1

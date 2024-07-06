@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://uvj5tg0hfdu7"]
+
+[ext_resource type="Script" path="res://Session-02/scripts/ghost_x.gd" id="1_vfvf8"]
+[ext_resource type="Texture2D" uid="uid://k4jxpehikfhj" path="res://Session-02/assets/ghost.png" id="2_m8ua4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7qrxy"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_slarr"]
+radius = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooh6x"]
+atlas = ExtResource("2_m8ua4")
+region = Rect2(0, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evsub"]
+atlas = ExtResource("2_m8ua4")
+region = Rect2(16, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjp6y"]
+atlas = ExtResource("2_m8ua4")
+region = Rect2(32, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scr21"]
+atlas = ExtResource("2_m8ua4")
+region = Rect2(48, 0, 16, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_my2bb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooh6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evsub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjp6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scr21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r48oh"]
+radius = 7.0
+
+[node name="Ghost_X" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_vfvf8")
+SPEED = 100.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(9, 0)
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7qrxy")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(-9, 0)
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_slarr")
+
+[node name="ghost" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_my2bb")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r48oh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered_right"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_area_entered_left"]

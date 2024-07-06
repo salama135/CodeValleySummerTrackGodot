@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4rkb1wxbrfsc"]
+
+[ext_resource type="Script" path="res://Session-02/scripts/food.gd" id="1_eyx6m"]
+[ext_resource type="Texture2D" uid="uid://cx7e82ku2k0l2" path="res://Session-02/assets/burger-1.png" id="2_7rnxm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o7yv"]
+radius = 5.0
+
+[node name="Food" type="Area2D"]
+script = ExtResource("1_eyx6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7rnxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0o7yv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

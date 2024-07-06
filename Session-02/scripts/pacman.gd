@@ -1,5 +1,8 @@
+class_name character
+
 extends CharacterBody2D
 
+@onready var game_manager = %GameManager
 
 @export var SPEED = 300.0
 
@@ -21,3 +24,9 @@ func _physics_process(delta):
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	if(body is ghost_x or body is ghost_y):
+		game_manager.subtract_life()
+		

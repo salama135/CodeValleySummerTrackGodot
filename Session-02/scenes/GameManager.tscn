@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://fcp1r3csvqv5"]
+
+[ext_resource type="Script" path="res://Session-02/scripts/GameManager.gd" id="1_ac8u5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r4wdc"]
+font_size = 750
+font_color = Color(0.219608, 0.964706, 0.380392, 1)
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_ac8u5")
+
+[node name="LabelLifes" type="Label" parent="."]
+offset_top = 29.0
+offset_right = 3629.0
+offset_bottom = 1391.0
+scale = Vector2(0.0211716, 0.0211716)
+text = "Lifes: 0"
+label_settings = SubResource("LabelSettings_r4wdc")
+
+[node name="LabelScore" type="Label" parent="."]
+offset_right = 3629.0
+offset_bottom = 1362.0
+scale = Vector2(0.0211716, 0.0211716)
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_r4wdc")
+
+[node name="PanelGameOver" type="Panel" parent="."]
+visible = false
+offset_right = 720.0
+offset_bottom = 480.0
+scale = Vector2(0.556863, 0.553315)
+
+[node name="Label" type="Label" parent="PanelGameOver"]
+layout_mode = 1
+offset_left = 248.0
+offset_top = 188.0
+offset_right = 4318.0
+offset_bottom = 1210.0
+scale = Vector2(0.0557253, 0.0507157)
+text = "Game Over"
+label_settings = SubResource("LabelSettings_r4wdc")
+horizontal_alignment = 1

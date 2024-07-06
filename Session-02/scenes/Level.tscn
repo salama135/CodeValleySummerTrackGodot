@@ -89,6 +89,8 @@ texture = ExtResource("1_sj3c6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(119, 128)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" groups=["wall"]]
 position = Vector2(-74, 16)
@@ -366,6 +368,8 @@ shape = SubResource("CapsuleShape2D_jxe4i")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(119, 128)
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D" groups=["wall"]]
 position = Vector2(-74, 16)
