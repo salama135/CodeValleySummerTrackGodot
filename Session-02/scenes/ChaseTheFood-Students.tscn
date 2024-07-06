@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj7bieaseilaq"]
+
+[ext_resource type="PackedScene" uid="uid://c2stm2bw27a0d" path="res://Session-02/scenes/Level.tscn" id="1_27580"]
+[ext_resource type="PackedScene" uid="uid://c4rkb1wxbrfsc" path="res://Session-02/scenes/Food.tscn" id="4_jdeq2"]
+[ext_resource type="PackedScene" uid="uid://uvj5tg0hfdu7" path="res://Session-02/scenes/Ghost_X.tscn" id="5_jw08w"]
+[ext_resource type="PackedScene" uid="uid://c2ig5r0muxl6c" path="res://Session-02/scenes/Ghost_Y.tscn" id="6_c5b3k"]
+[ext_resource type="PackedScene" uid="uid://fcp1r3csvqv5" path="res://Session-02/scenes/GameManager.tscn" id="7_oqgna"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 399.0
+offset_bottom = 265.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, 133)
+zoom = Vector2(1.8, 1.8)
+
+[node name="Level" parent="." instance=ExtResource("1_27580")]
+position = Vector2(89, 4)
+
+[node name="Food" parent="." instance=ExtResource("4_jdeq2")]
+position = Vector2(146, 171)
+collision_layer = 4
+
+[node name="Food2" parent="." instance=ExtResource("4_jdeq2")]
+visible = false
+position = Vector2(171, 170)
+collision_layer = 4
+
+[node name="Food3" parent="." instance=ExtResource("4_jdeq2")]
+position = Vector2(147, 197)
+collision_layer = 4
+
+[node name="Ghost_X" parent="." instance=ExtResource("5_jw08w")]
+position = Vector2(167, 52)
+
+[node name="Ghost_Y" parent="." instance=ExtResource("6_c5b3k")]
+position = Vector2(146, 89)
+
+[node name="GameManager" parent="." instance=ExtResource("7_oqgna")]
+unique_name_in_owner = true
