@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpwdgl4bn6scg"]
+
+[ext_resource type="Script" path="res://Session-02/scripts/PlayeSound.gd" id="1_pfkut"]
+[ext_resource type="AudioStream" uid="uid://dnjkxhgv1efcg" path="res://Session-02/sounds/pacman_chomp.wav" id="2_pqony"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_pfkut")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_pqony")

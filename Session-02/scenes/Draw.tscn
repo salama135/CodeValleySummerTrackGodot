@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7bq6d7kvkpj"]
+
+[ext_resource type="Script" path="res://Session-02/scripts/DrawShape.gd" id="1_3v7at"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3v7at")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -309.0
+offset_top = -193.0
+offset_right = -269.0
+offset_bottom = -153.0
+scale = Vector2(15.7345, 9.49999)
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
